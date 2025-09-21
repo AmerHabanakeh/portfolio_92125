@@ -1,0 +1,73 @@
+<app-main-heading [header]="'About Me'"></app-main-heading>
+
+<div data-aos="fade-up" data-aos-duration="1000" class="max-w-4xl mx-auto py-4  text-white">
+    <!-- Personal Info Section -->
+    <section>
+        <h1 class="text-lg font-bold">Hello! I'm {{ personalInfo.name }}. </h1>
+        <p class="text-gray-400 mt-2">{{ personalInfo.description }}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 pb-8 gap-6 text-gray-400 mt-4">
+            @for(detail of personalInfo.details; track $index) {
+            <div>
+                {{ detail.label }} . . . . <span class="text-white">{{ detail.value }}</span>
+            </div>
+            }
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section>
+        <app-main-heading [header]="'My Service'"></app-main-heading>
+        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-6 mt-6">
+            @for(service of services; track $index) {
+            <div class="p-6 rounded-lg transition-colors duration-300">
+                <div class="flex items-center mb-3">
+                    <div
+                        class="w-16 h-16 flex items-center justify-center border-2 border-[#f6b846] rounded-full text-[#f6b846]">
+                        <i [class]="service.icon"></i>
+                    </div>
+                    <h3 class="ml-3 font-bold">{{ service.title }}</h3>
+                </div>
+                <ul class="text-gray-400 space-y-2 pl-2 list-disc list-inside">
+                    @for(point of service.descriptionPoints; track $index) {
+                    <li>{{ point }}</li>
+                    }
+                </ul>
+            </div>
+        }
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <!-- <section class="py-12">
+        <app-main-heading [header]="'Clients'"></app-main-heading>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-6">
+            @for(client of clients; track $index) {
+            <img [src]="client.logo" alt="" class="mx-auto opacity-60 hover:opacity-100 transition w-24 h-auto" />
+            }
+        </div>
+    </section> -->
+
+    <!-- Testimonials Section -->
+    <section class="pb-4">
+        <app-main-heading [header]="'Testimonials'"></app-main-heading>
+        <div class="relative mt-8">
+            <swiper-container slides-per-view="1" loop="true" autoplay-delay="3000" speed="500"
+                pagination="{ clickable: true }" class="w-full">
+                @for(testimonial of testimonials; track $index) {
+                <swiper-slide>
+                    <div class="text-center px-4">
+                        <p class="italic text-gray-300 text-lg max-w-2xl mx-auto">
+                            &#8220; {{ testimonial.quote }} &#8221;
+                        <div class="mt-6 flex flex-col items-center">
+                            <img [src]="testimonial.image" alt=""
+                                class="w-16 h-16 rounded-full border-2 border-yellow-500 shadow-md" />
+                            <p class="font-bold mt-2">{{ testimonial.name }}</p>
+                            <span class="text-gray-400 text-sm">{{ testimonial.position }}</span>
+                        </div>
+                    </div>
+                </swiper-slide>
+                }
+            </swiper-container>
+        </div>
+    </section>
+</div>

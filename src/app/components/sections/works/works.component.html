@@ -1,0 +1,98 @@
+<div class=" text-white ">
+    <div class="md:flex md:justify-between lg:flex lg:justify-between block">
+        <!-- Title -->
+        <app-main-heading [header]="'Works'"></app-main-heading>
+        
+        <!-- Filter Menu -->
+        <!-- <div class="flex space-x-4 text-gray-400 mb-6">
+            @for(type of ['All', 'Link', 'Gallery']; track $index ) {
+                <button
+                (click)="filterWorks(type)"
+                class="cursor-pointer hover:text-[#f6b846] transition-colors duration-300"
+                [ngClass]="{ 'text-[#f6b846]': selectedFilter === type }">
+                {{ type }}
+            </button>
+        }
+        </div> -->
+    </div>
+
+    <!-- Works Grid -->
+    <div data-aos="fade-up" data-aos-duration="1000" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+    @for (work of filteredWorks; track $index) {
+    <div class="group p-4 rounded-lg cursor-pointer relative" (click)="openDialog(work)">
+
+        <a *ngIf="work.link" [href]="work.link" target="_blank" rel="noopener noreferrer" (click)="$event.stopPropagation()"
+            class="absolute top-5 right-5 z-20 text-white rounded-[50%] p-2 bg-gray-700 hover:text-[#f6b846] transition-colors">
+            <i class="fas fa-external-link-alt text-lg"></i>
+        </a>
+
+        <!-- Image container with hover effects -->
+        <div class="relative overflow-hidden rounded-lg">
+            <!-- Gradient overlay -->
+            <div
+                class="absolute inset-0 bg-gradient-to-br from-[rgba(246,184,70,0.4)] to-[rgba(246,184,70,0.01)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+            </div>
+
+            <img [src]="work.image" [alt]="work.title" alt=""
+                class="w-full h-auto rounded-lg transition-transform duration-300 group-hover:scale-105" />
+
+            <!-- Centered icon -->
+            <span
+                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                <i class="fas fa-images"></i>
+            </span>
+        </div>
+
+        <h5 class="text-center font-semibold mt-3 group-hover:text-[#f6b846] transition-colors duration-300">{{
+            work.title }}</h5>
+        <!-- <p class="text-center text-gray-400 mt-3">{{ work.types }}</p> -->
+    </div>
+    }
+</div>
+
+<!-- Dialog overlay and content -->
+@if (selectedWork) {
+<div class="fixed inset-0 z-50 transition-opacity duration-300 ease-in-out"
+    [class]="dialogOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'">
+    <!-- Background overlay -->
+    <div class="absolute inset-0 bg-black opacity-80" (click)="closeDialog()"></div>
+
+    <!-- Dialog content -->
+    <div class="relative h-full w-full flex items-center justify-center p-4">
+        <div class="relative max-w-4xl w-full bg-transparent rounded-lg shadow-xl overflow-hidden transition-all duration-300 transform"
+            [class]="dialogOpen ? 'scale-100' : 'scale-95'">
+            <!-- Close button -->
+            <button class="absolute top-4 right-4 z-50 text-gray-600 hover:text-[#f6b846] transition-colors"
+                (click)="closeDialog()">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+
+            <!-- Image navigation -->
+            <div class="relative h-[70vh]">
+                <!-- Current image -->
+                <img [src]="selectedWork?.images[currentImageIndex]" [alt]="selectedWork.title" alt=""
+                    class="w-full h-full object-fill">
+
+                <!-- Navigation buttons -->
+                <button
+                    class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-30"
+                    (click)="prevImage($event)" *ngIf="selectedWork.images.length > 1">
+                    <i class="fas fa-chevron-left text-[#f6b846]"></i>
+                </button>
+                <button
+                    class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-30"
+                    (click)="nextImage($event)" *ngIf="selectedWork.images.length > 1">
+                    <i class="fas fa-chevron-right text-[#f6b846]"></i>
+                </button>
+
+                <!-- Image counter -->
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/80 px-3 py-1 rounded-full text-sm text-gray-700"
+                    *ngIf="selectedWork.images.length > 1">
+                    {{ currentImageIndex + 1 }} / {{ selectedWork.images.length }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+</div>

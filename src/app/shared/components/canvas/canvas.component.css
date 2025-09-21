@@ -1,0 +1,44 @@
+.canvas {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+canvas-cyberlines {
+    display: flex;
+    justify-content: center;
+    background: #161616 !important;
+}
+
+.canvas.canvas-cyberlines {
+        background: #161616 !important;
+}
+
+svg {
+    position: absolute;
+    height: 100%;
+}
+
+.lines {
+    opacity: .05;
+}
+
+.line {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #f6b846;
+}
+
+.lights {
+    opacity: 1;
+}
+
+.light {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #f6b846;
+}

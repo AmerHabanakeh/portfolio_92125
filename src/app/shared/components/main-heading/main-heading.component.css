@@ -1,0 +1,23 @@
+.main-heading::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    /* z-index: -1; */
+    border-radius: 50%;
+    background: -webkit-linear-gradient(-45deg, rgba(246, 184, 70, .4) 0%, rgba(246, 184, 70, .01) 100%);
+}
+
+.main-heading::after {
+    content: '';
+    position: absolute;
+    left: -30px;
+    right: 0;
+    bottom: -10px;
+    height: 1px;
+    margin-bottom: 20px;
+    background: -webkit-radial-gradient(left, ellipse cover, rgba(197, 202, 213, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+}
+

@@ -1,0 +1,58 @@
+<div class="grow-[0.6] bg-[#222222] rounded-lg h-[600px] relative">
+    <div class="relative w-full h-full  md:card-start card-start ">
+        <!-- Swiper Container -->
+        <swiper-container #swiperContainer
+                slides-per-view="1" 
+                effect="fade" 
+                speed="3000" 
+                loop="true" 
+                autoplay-delay="500"  
+                class="absolute inset-0 z-0 w-full h-full">
+            @for(image of sliderImages; track $index) {
+                    <swiper-slide lazy="true">
+                        <img loading="lazy" [src]="image" class="w-full h-[250px]  rounded-lg object-cover" alt="Background Image" />
+                    </swiper-slide>
+            }
+        </swiper-container>
+
+
+
+        <div class="relative flex flex-col items-center justify-center h-full text-center text-white ">
+            <!-- Profile Image -->
+            <div class="relative mt-12 w-28 h-28 z-50  md:w-36 md:h-36 rounded-full  shadow-lg img-shadow">
+                <img [src]="profileImage" class="rounded-[50%] w-full h-full object-cover " alt="Profile Picture" />
+            </div>
+
+            <!-- Name -->
+            <div class="mt-4 text-xl md:text-3xl ">Amer Habanakeh</div>
+
+            <!-- Typewriter Effect -->
+            <ngx-typed-js [strings]="['Front-end Developer', 'Angular Developer', 'React Javascript Developer']" [typeSpeed]="50"
+                [backSpeed]="30" [loop]="true" class="text-[12px] my-4 md:text-sm text-[#f6b846]">
+                <span class="typing"></span>
+            </ngx-typed-js>
+
+            <!-- Social Icons -->
+            <div class="flex gap-4 mt-4">
+                @for (icon of socialIcons; track $index) {
+                <a [href]="icon.link" target="_blank" class="text-lg hover:text-[#f6b846] transition">
+                    <i [class]="icon.class"></i>
+                </a>
+                }
+            </div>
+
+            <!-- Buttons -->
+            <div class="mt-6 w-full justify-center flex gap-6 absolute bottom-0 l-0 h-[70px] horizontal-line">
+                <button (click)="openPdf()"
+                    class="px-6 py-2  text-white hover:text-[#f6b846] transition-icon rounded-lg flex items-center gap-2 cursor-pointer vertical-line  transition-all">
+                    <span>Download CV</span>
+                    <i class="fas fa-download"></i>
+                </button>
+                <button (click)="contactMe()" class="px-6 py-2  text-white hover:text-[#f6b846] transition-icon rounded-lg flex items-center gap-2 cursor-pointer transition-all">
+                    <span>Contact Me</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

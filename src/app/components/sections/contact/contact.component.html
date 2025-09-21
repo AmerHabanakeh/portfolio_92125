@@ -1,0 +1,67 @@
+<div data-aos="fade-up" data-aos-duration="1000" class="h-full">
+    <app-main-heading [header]="'Get in touch'"></app-main-heading>
+
+    <app-google-map></app-google-map>
+
+    <app-main-heading [header]="'Contact Form'"></app-main-heading>
+
+    <!-- Form Data -->
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()"
+    class="py-6 grid md:grid-cols-2 gap-6 justify-between text-white">
+    <!-- Name Field -->
+    <div class="relative">
+        <input type="text" placeholder="Full Name" formControlName="name"
+            class="w-full p-3 rounded-lg transition-all duration-300 focus:outline-none border-b border-[#666] focus:border-b focus:border-[#f6b846] focus:scale-[1.02]"
+            [ngClass]="{'!border-red-500': contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)}">
+        <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)"
+            class="text-red-500 text-xs mt-1">
+            <div *ngIf="contactForm.get('name')?.errors?.['required']">
+                Name is required
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Field -->
+    <div class="relative">
+        <input type="email" placeholder="Your Email" formControlName="email"
+            class="w-full p-3 rounded-lg transition-all duration-300 focus:outline-none border-b border-[#666] focus:border-b focus:border-[#f6b846] focus:scale-[1.02]"
+            [ngClass]="{'!border-red-500': contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)}">
+        <div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)"
+            class="text-red-500 text-xs mt-1">
+            <div *ngIf="contactForm.get('email')?.errors?.['required']">
+                Email is required
+            </div>
+            <div *ngIf="contactForm.get('email')?.errors?.['email']">
+                Please enter a valid email
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Field -->
+    <div class="relative col-span-full">
+        <textarea placeholder="Your Message" formControlName="message"
+            class="w-full p-3 rounded-lg h-32 transition-all duration-300 focus:outline-none border-b border-[#666] focus:border-b focus:border-[#f6b846] focus:scale-[1.02]"
+            [ngClass]="{'!border-red-500': contactForm.get('message')?.invalid && (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)}"></textarea>
+        <div *ngIf="contactForm.get('message')?.invalid && (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)"
+            class="text-red-500 text-xs mt-1">
+            <div *ngIf="contactForm.get('message')?.errors?.['required']">
+                Message is required
+            </div>
+            <div *ngIf="contactForm.get('message')?.errors?.['minlength']">
+                Message must be at least 10 characters
+            </div>
+        </div>
+    </div>
+
+    <button type="submit"
+        class="flex items-center gap-2 transition-icon text-white transition-all duration-300 hover:text-[#f6b846]">
+        <ng-container *ngIf="!loader; else loading">
+            <span>Send Message</span>
+            <i class="fa-solid fa-arrow-right fa-xs"></i>
+        </ng-container>
+        <ng-template #loading>
+            <app-spinner></app-spinner>
+        </ng-template>
+    </button>
+</form>
+</div>

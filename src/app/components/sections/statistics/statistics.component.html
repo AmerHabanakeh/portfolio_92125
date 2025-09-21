@@ -1,0 +1,17 @@
+<div [@fadeInOut] class="h-full">
+    <app-main-heading [header]="'Statistics'" />
+
+    <div data-aos="fade-up" data-aos-duration="1000" class="py-4 grid grid-cols-2 md:grid-cols-3 gap-4">
+        @for (stat of statistics; track $index)
+        {
+        <div
+            class="py-4 rounded-lg text-center transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/20">
+            <div class="text-[#f6b846] text-3xl mb-2">
+                <i [class]="stat.icon"></i>
+            </div>
+            <p class="text-gray-400">{{ stat.label }}</p>
+            <h3 class="text-xl font-semibold text-white">{{ stat.value }}</h3>
+        </div>
+        }
+    </div>
+</div>
