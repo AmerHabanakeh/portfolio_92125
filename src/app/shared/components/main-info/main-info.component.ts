@@ -70,7 +70,7 @@ export class MainInfoComponent {
 
   openPdf() {
     // Assuming your PDF is in assets folder as 'cv.pdf'
-    const pdfUrl = '/assets/Amer_Habanakeh_Frontend_Angular.pdf';
+    const pdfUrl = '/assets/cv.pdf';
 
     // Open in new tab
     window.open(pdfUrl, '_blank');
