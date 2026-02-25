@@ -33,6 +33,15 @@ export interface KnowledgeItem {
 })
 export class ResumeComponent {
   experiences = [
+    {
+      period: '2024 - Present',
+      title: 'Angular Developer',
+      company: 'Preneom.',
+      descriptionItems:
+        [
+          `development the front-end development of "iLab," a multi-tenant SaaS platform for dental lab management, utilizing Angular (RxJS, NgRx, Standalone Components) . Engineered real-time collaborative features and complex UI workflows to streamline lab operations, ensuring financial clarity for clients. Implemented lazy loading and optimized architecture to enhance application performance and support multi-tenant scalability..`
+        ]
+    },
     { period: '2023 - 2025', 
       title: 'Angular Developer', 
       company: 'JoyBox.', 
@@ -58,10 +67,10 @@ export class ResumeComponent {
   ];
 
   educations = [
-    { period: '2020 - Present',
+    { period: '2020 - 2025',
       institution: 'Arab International University', 
       location: 'Syria',
-      details: 'Bachelors Degree (Expected 2025)'
+      details: 'Bachelors Degree '
     },
 
     { period: '2021 - 2022', 

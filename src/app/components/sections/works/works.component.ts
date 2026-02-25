@@ -28,6 +28,29 @@ export class WorksComponent {
 
   WORKS: Work[] = [
     {
+      title: "E-Commerce System",
+      image: "assets/works-image/fyndura-main.jpg",
+      types: ['Gallery', 'Link'],
+      images: [
+        "assets/works-image/fyndura-home.png",
+        "assets/works-image/fyndura-login.png",
+        "assets/works-image/fyndura-account.png",
+        "assets/works-image/fyndura-adv.png"
+      ],
+      link: "https://fyndura.net/"
+    },
+    {
+      title: "iLab Dental Lab Management",
+      image: "assets/works-image/ilab-hero.png",
+      types: ['Gallery', 'Link'],
+      images: [
+        "assets/works-image/ilab-integrations.png",
+        "assets/works-image/add-new-case.png",
+        "assets/works-image/sales.png",
+      ],
+      link: "https://ilab.dental/"
+    },
+    {
       title: "E-Learning System",
       image: "assets/works-image/aalamy-main.png",
       types: ['Gallery', 'Link'],

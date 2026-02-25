@@ -20,7 +20,7 @@ export class StatisticsComponent {
   statistics: Statistic[] = [
     { icon: 'fab fa-github', label: 'GitHub Stars', value: 1 },
     { icon: 'fas fa-smile', label: 'Happy Clients', value: 2 },
-    { icon: 'fas fa-briefcase', label: 'Years of Experience', value: 2 },
+    { icon: 'fas fa-briefcase', label: 'Years of Experience', value: 3 },
     { icon: 'fas fa-code', label: 'Projects Number', value: 8 },
   ];
 }

@@ -18,7 +18,7 @@ import { register } from 'swiper/element';
 export class AboutMeComponent {
   personalInfo = {
     name: 'Amer Habanakeh',
-    description: `Front-end developer from Damascus, Syria. I have rich experience in Angular & React 
+    description: `Front-end developer from Damascus, Syria. I have rich experience in Angular
                   Proven expertise in developing single-page applications (SPAs), optimizing
                   performance. Strong understanding of RESTful APIs, UI/UX principles, and Agile methodologies. 
     `,
